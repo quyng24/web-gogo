@@ -200,4 +200,7 @@ li {
     .grid__row {
         margin: 0;
     }
+    .select-input {
+        min-width: 20%;
+    }
 }

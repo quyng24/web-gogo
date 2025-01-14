@@ -37,6 +37,7 @@ fetchApi("https://dummyjson.com/products")
         allProductBtn.className = 'category-list';
         allProductBtn.textContent = 'ALL PRODUCTS';
         allProductBtn.style.fontWeight = 'bold';
+        allProductBtn.style.fontSize = '1rem';
         categoryContainer.insertAdjacentElement('afterbegin', allProductBtn);
         allProductBtn.addEventListener('click', () => {
             displayProduct(products);

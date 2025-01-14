@@ -775,7 +775,7 @@ p.btn-sort-lowtohigh, p.btn-sort-hightolow {
 .home-filter__pages {
     font-size: 1.4rem;
     color: #444;
-    margin-right: 22px;
+    margin-right: 5px;
 }
 .home-filter__page-current {
     color: #02a22a;  
@@ -790,8 +790,8 @@ p.btn-sort-lowtohigh, p.btn-sort-hightolow {
     border-radius: 2px;
     overflow: hidden;
     display: flex;
-    width: 72px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
 }
 .home-filter__page-btn:first-child {
     border-right: 1px solid #eee;
@@ -1099,7 +1099,8 @@ i.home-product-liketym-dlx {
         justify-content: space-evenly;
     }
     .category-list .category-item {
-        min-width: 90px;
+        min-width: 15%;
+        font-size: 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1114,9 +1115,32 @@ i.home-product-liketym-dlx {
 }
 @media (max-width: 567.98px) {
     .btn {
-        min-width: 65px;
+        min-width: 12%;
     }
-    .home-filter .select-input {
-        min-width: 90px;
+    .grid__colum-2 .home-filter .select-input {
+        min-width: 20% !important;
+    }
+    .home-filter .select-input .select-input__link {
+        min-width: 20%;
+    }
+    .header .grid .header-wisearch {
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 0;
+    }
+    .header .grid .header-wisearch .header__search {
+        margin: 10px;
+        max-width: 65%;
+    }
+    .header .grid .header-wisearch .header__search-slt {
+        display: none;
+    }
+    .header .grid .header-wisearch .header__search-btn {
+        width: 50px;
+    }
+    .header .grid .header-wisearch .header__giohang i {
+        width: auto;
     }
 }
