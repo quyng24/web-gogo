@@ -1123,6 +1123,14 @@ i.home-product-liketym-dlx {
     .home-filter .select-input .select-input__link {
         min-width: 20%;
     }
+    .header__nav-users .header__nav-usavata {
+        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+    }
+    .header__nav-usmenu {
+        right: -26%;
+    }
     .header .grid .header-wisearch {
         width: auto;
         display: flex;
@@ -1132,7 +1140,7 @@ i.home-product-liketym-dlx {
     }
     .header .grid .header-wisearch .header__search {
         margin: 10px;
-        max-width: 65%;
+        width: auto;
     }
     .header .grid .header-wisearch .header__search-slt {
         display: none;
@@ -1142,5 +1150,8 @@ i.home-product-liketym-dlx {
     }
     .header .grid .header-wisearch .header__giohang i {
         width: auto;
+    }
+    .header .grid .header-wisearch .header__giohang .header__giohang-list {
+        right: -22px;
     }
 }
