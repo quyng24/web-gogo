@@ -5,12 +5,12 @@
 .header__navbar {
     display: flex;
     justify-content: space-between;
+    padding: 10px 0;
 }
 .header__nav-list {
     list-style: none;
     padding-left: 20px;
     padding-right: 20px;
-    margin-top: 4px 0 0 0;
     display: flex;
 }
 .header__nav-item {
@@ -25,10 +25,10 @@
     position: relative;
 }
 .header__nav-usavata {
-    width: 22px;
-    height: 22px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-image: url(../img/IMG_1360.PNG);
 }
 .header__nav-usname {
     font-size: 1.3rem;
@@ -496,7 +496,7 @@
     outline: none;
     font-size: 1.4rem; 
     border-radius: 2px;
-    color: #ccc;
+    color: #000;
     padding: 0 16px;
 }
 .header__search-slt {
@@ -755,6 +755,8 @@
 p.btn-sort-lowtohigh, p.btn-sort-hightolow {
     font-size: 12px;
     color: #333;
+    cursor: pointer;
+    padding: 10px 0;
 }
 .home-filter__page {
     display: flex;
@@ -1023,4 +1025,86 @@ i.home-product-liketym-dlx {
     font-size: 1.2rem;
     text-align: center;
     color: #737373;
+}
+@media (max-width: 991.98px) {
+    .header__navbar {
+        justify-content: center;
+    }
+    .header__nav-item.less-important {
+        display: none;
+    }
+    .header__nav-list {
+        padding: 10px 0;
+    }
+}
+@media (max-width: 767.98px) {
+    .header {
+        height: auto;
+    }
+    .header .grid {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+    .header__nav-item {
+        display: none;
+    }
+    .header__nav-users {
+        display: flex;
+        align-items: flex-end;
+    }
+    .header__nav-users .header__nav-usavata {
+        margin-right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    .header__nav-users .header__nav-usname {
+        display: none;
+    }
+    .header__nav-usmenu {
+        position: absolute;
+        right: 15%;
+        top: 130%;
+    }
+    .header .grid .header-wisearch {
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+    .header .grid .header-wisearch .header__logo {
+        display: none;
+    }
+    .header .grid .header-wisearch .header__search {
+        width: 400px;
+    }
+    .header .grid .header-wisearch .header__giohang i {
+        width: 50px;
+        margin-left: 15px;
+    }
+    .header .grid .header-wisearch .header__giohang .header__giohang-list  {
+        top: 150%;
+        right: -8px;
+    }
+    .grid__row.app__content {
+        display: flex;
+        flex-direction: column;
+    }
+    .category-list {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .category-list .category-item {
+        min-width: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-left: 1px solid #000;
+    }
+    .footer .grid {
+        padding: 0 20px;
+    }
+    .grid__colum-2-4 {
+        margin-bottom: 20px;
+    }
 }
