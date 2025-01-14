@@ -1,46 +1,72 @@
 import { fetchApi } from "./fetchapi.js";
+import { displayProduct, searchProducts } from "./product.js";
+
+
+// fetch API display product 
+let products = [];
 fetchApi("https://dummyjson.com/products")
     .then(data => {
-        let htmls = "";
-        data.products.forEach(item => {
-            htmls += `
-                <div class="grid__colum-2-4 item-wrap">
-                    <a href="#" class="home-product-item">
-                        <div class="home-product-item__img" style="background-image: url(${item.thumbnail});"></div>
-                        <h5 class="home-product-item__namesp">${item.title}</h5>
-                        <div class="home-product-item__gia">
-                            <span class="home-product-item__giacu">1.200.000$</span>
-                            <span class="home-product-item__giamoi">${item.pice}$</span>
-                        </div>
-                        <div class="home-product-item__action">
-                            <span class="home-product-liketym home-product-liketym-dl">
-                                <i class="home-product-liketym-dlv far fa-heart"></i>
-                                <i class="home-product-liketym-dlx fas fa-heart"></i>
-                            </span>
-                            <div class="home-product-rating">
-                                <i class="ome-product-star-gold fas fa-star"></i>
-                                <i class="ome-product-star-gold fas fa-star"></i>
-                                <i class="ome-product-star-gold fas fa-star"></i>
-                                <i class="ome-product-star-gold fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="home-product-item-ban">88 đã bán</span>
-                        </div>
-                        <div class="home-product-item__xx">
-                            <span class="home-product-item__brand">Whoo</span>
-                            <span class="home-product-item__tensx">${item.brand}</span>
-                        </div>
-                        <div class="home-product-item__yt">
-                            <i class="home-product-item__yt-icon fas fa-check"></i>
-                            <span class="home-product-nhthem">Yêu thích</span>
-                        </div>
-                        <div class="home-product-item__seal">
-                            <span class="home-product-ptram">10%</span>
-                            <span class="home-product-giam">GIẢM</span>
-                        </div>
-                    </a>
-                </div>
-            `;
-            document.querySelector('.home-product .grid__row').innerHTML = htmls;
-        })
+        products = data.products;
+        displayProduct(products);
     })
+
+
+// searchs products 
+const searchInput = document.querySelector('.header__search-input');
+searchInput.addEventListener('change', (e) => {
+    const query = e.target.value.trim();
+    const filterProducts = searchProducts(products, query)
+    if(query === '') {
+        displayProduct(products);
+    } else {
+        displayProduct(filterProducts);
+    }
+});
+
+
+// Categorize product list
+fetchApi("https://dummyjson.com/products")
+    .then(data => {
+        const categories = [...new Set(data.products.map(product => product.category))];
+        const categoryContainer = document.querySelector('.category-list');
+        let htmls = categories.map(category => `
+            <li class="category-item">${category.toUpperCase()}</li>`).join('');
+        categoryContainer.innerHTML = htmls;
+
+        const allProductBtn = document.createElement('li');
+        allProductBtn.className = 'category-list';
+        allProductBtn.textContent = 'ALL PRODUCTS';
+        allProductBtn.style.fontWeight = 'bold';
+        categoryContainer.insertAdjacentElement('afterbegin', allProductBtn);
+        allProductBtn.addEventListener('click', () => {
+            displayProduct(products);
+        });
+        const categoryItems = document.querySelectorAll('.category-item');
+        categoryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const categoryContent = item.textContent.toLocaleLowerCase();
+                const filterDisplayProducts = products.filter(item => {
+                    if(item.category == categoryContent) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+                displayProduct(filterDisplayProducts);
+                
+            });
+        });
+    });
+
+
+// sort products by price
+const btnSortLowHigh = document.querySelector('li.btn-sort-lowtohigh');
+const btnSortHighLow = document.querySelector('li.btn-sort-hightolow');
+btnSortLowHigh.addEventListener('click', () => {
+    const sortProduct = [...products].sort((a, b) => a.price - b.price);
+    displayProduct(sortProduct);
+});
+btnSortHighLow.addEventListener('click', (e) => {
+    const sortProduct = [...products].sort((a, b) => b.price - a.price);
+    displayProduct(sortProduct);
+});

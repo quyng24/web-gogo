@@ -16,6 +16,12 @@ html {
     font-family: "Roboto", sans-serif;
     box-sizing: border-box;
 }
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
 .grid {
     width: 1200px;
     max-width: 100%;
